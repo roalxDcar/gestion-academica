@@ -25,7 +25,7 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('first_name');
             $table->string('last_name');
-            $table->integer('ci');
+            $table->integer('ci')->unique();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
@@ -33,9 +33,9 @@ class CreateUsersTable extends Migration
             $table->dateTime('date_attempts')->nullable();
             $table->integer('gender');
             $table->string('address');
-            $table->integer('phone');
+            $table->integer('phone')->nullable();
             $table->integer('mobil');
-            $table->string('photo');
+            $table->string('photo')->default('default.png');
             $table->integer('day');
             $table->integer('month');
             $table->integer('year');

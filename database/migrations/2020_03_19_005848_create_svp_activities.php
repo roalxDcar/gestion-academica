@@ -16,7 +16,8 @@ class CreateSvpActivities extends Migration
         Schema::create('svp_activities', function (Blueprint $table) {
             $table->increments('activity_id');
             $table->string('description');
-            $table->text('detail');
+            $table->text('itinerary')->nullable();
+
             $table->date('date');
             $table->integer('state')->default(1);
             $table->timestamps();

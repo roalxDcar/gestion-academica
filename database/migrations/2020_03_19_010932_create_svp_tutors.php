@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSvpStudents extends Migration
+class CreateSvpTutors extends Migration
 {
     /**
      * Run the migrations.
@@ -13,29 +13,18 @@ class CreateSvpStudents extends Migration
      */
     public function up()
     {
-        Schema::create('svp_students', function (Blueprint $table) {
-            $table->increments('student_id');
-
-            $table->integer('province_id')->unsigned();
-
-            $table->string('rude')->unique();
+        Schema::create('svp_tutors', function (Blueprint $table) {
+            $table->increments('tutor_id');
             $table->string('name');
             $table->string('first_name');
             $table->string('last_name');
             $table->integer('ci')->unique();
             $table->string('email')->unique();
             $table->integer('gender');
-            $table->string('address');
             $table->integer('phone')->nullable();
             $table->integer('mobil');
-            $table->string('photo')->default('student.png');
-            $table->integer('day');
-            $table->integer('month');
-            $table->integer('year');
             $table->integer('state')->default(1);
             $table->timestamps();
-
-            $table->foreign('province_id')->references('province_id')->on('svp_provinces');
         });
     }
 
@@ -46,6 +35,6 @@ class CreateSvpStudents extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('svp_students');
+        Schema::dropIfExists('svp_tutors');
     }
 }

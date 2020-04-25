@@ -19,7 +19,7 @@ class CreateSvpDetailActivities extends Migration
             $table->integer('user_id')->unsigned();
             $table->integer('activity_id')->unsigned();
 
-            $table->string('observation');
+            $table->string('observation')->nullable();
             $table->integer('state')->default(1);
             $table->timestamps();
 

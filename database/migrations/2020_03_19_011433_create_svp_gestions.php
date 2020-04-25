@@ -15,8 +15,9 @@ class CreateSvpGestions extends Migration
     {
         Schema::create('svp_gestions', function (Blueprint $table) {
             $table->increments('gestion_id');
-            $table->integer('year');
+            $table->integer('year')->unique();
             $table->string('description');
+            $table->integer('type_qualification');
             $table->integer('state')->default(1);
             $table->timestamps();
         });

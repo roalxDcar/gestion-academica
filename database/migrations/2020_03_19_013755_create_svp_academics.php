@@ -19,11 +19,10 @@ class CreateSvpAcademics extends Migration
             $table->integer('student_id')->unsigned();
             $table->integer('gestion_id')->unsigned();
             $table->integer('level_id')->unsigned();
+            $table->integer('tutor_id')->unsigned();
 
             $table->integer('assinged_subjet');
             $table->double('average',8,2);
-            $table->string('tutor');
-            $table->integer('cellphone_tutor');
             $table->integer('state')->default(1);
             $table->timestamps();
 
@@ -31,6 +30,7 @@ class CreateSvpAcademics extends Migration
             $table->foreign('student_id')->references('student_id')->on('svp_students');
             $table->foreign('gestion_id')->references('gestion_id')->on('svp_gestions');
             $table->foreign('level_id')->references('level_id')->on('svp_levels');
+            $table->foreign('tutor_id')->references('tutor_id')->on('svp_tutors');
 
         });
     }
