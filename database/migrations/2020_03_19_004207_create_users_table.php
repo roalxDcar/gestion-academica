@@ -18,8 +18,8 @@ class CreateUsersTable extends Migration
 
             $table->integer('province_id')->unsigned();
             $table->integer('civil_state_id')->unsigned();
-            $table->integer('specialty_id')->unsigned();
-            $table->integer('category_id')->unsigned();
+            $table->integer('specialty_id')->unsigned()->nullable();
+            $table->integer('category_id')->unsigned()->nullable();
             $table->integer('role_id')->unsigned();
 
             $table->string('name');
