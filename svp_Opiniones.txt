@@ -2,3 +2,7 @@
 login para los padres
     con un url que te redireccione a un pantalla de verificacion con Carnet Identidad
 
+
+2:
+Generar DashBoar con opcion de Filtrar
+
