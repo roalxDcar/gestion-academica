@@ -11,6 +11,8 @@
 |
 */
 
+use App\Http\Controllers\UserController;
+
 Route::get('/', function () {
     return redirect()->route('login');
 });
@@ -37,12 +39,22 @@ Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
 //Contenido
 
-//Usuarios
-Route::get('/usuarios', 'UserController@index')->name('user.get');
 
-Route::get('/nuevo-usuario', 'UserController@create')->name('user.create');
+Route::group(['middleware' => 'auth'], function () {
+
+    //Usuarios
+    Route::get('/usuarios', 'UserController@index')->name('user.get');
+    Route::get('/nuevo-usuario', 'UserController@create')->name('user.create');
+    Route::post('/nuevo-usuario/guardar', 'UserController@store')->name('user.store');
+    Route::get('/editar-usuario/{id}', 'UserController@edit')->name('user.edit');
+    Route::put('/editar-usuario/actualizar/{id}', 'UserController@update')->name('user.update');
 
 
-//Roles
-Route::get('/roles', 'RoleController@index')->name('role.get');
-Route::post('/nuevo-rol/guardar', 'RoleController@store')->name('role.store');
+    //Roles
+    Route::get('/roles', 'RoleController@index')->name('role.get');
+    Route::post('/nuevo-rol/guardar', 'RoleController@store')->name('role.store');
+
+});
+
+
+
