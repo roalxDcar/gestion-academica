@@ -16,11 +16,11 @@ class UsersTableSeeder extends Seeder
             'province_id' => 1,
             'civil_state_id' => 1,
             'role_id' => 1,
-            'name' => 'Joss',
-            'first_name' => 'Y',
-            'last_name' => 'Ch',
-            'ci' => 545334,
-            'email'=>'josy.bjos@gmail.com',
+            'name' => 'Ronald',
+            'first_name' => 'M',
+            'last_name' => 'M',
+            'ci' => 12345678,
+            'email'=>'roalmollericona@gmail.com',
             'password'=>bcrypt(12345678),
             'gender' => 1,
             'address' => 'aaaaa',
@@ -29,11 +29,6 @@ class UsersTableSeeder extends Seeder
             'month' => 5,
             'year' => 1995,
             'service_years' => 1,
-        ]);
-        User::create([
-            'name' => 'Ronald',
-            'email'=>'roalmollericona@gmail.com',
-            'password'=>bcrypt(12345678)
         ]);
     }
 }
