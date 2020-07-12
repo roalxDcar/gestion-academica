@@ -18,6 +18,14 @@
     <link href="{!! asset('assets/vendors/nprogress/nprogress.css') !!}" rel="stylesheet">
     <!-- iCheck -->
     <link href="{!! asset('assets/vendors/iCheck/skins/flat/green.css') !!}" rel="stylesheet">
+     <!-- bootstrap-wysiwyg -->
+    <link href="{!! asset('assets/vendors/google-code-prettify/bin/prettify.min.css') !!}" rel="stylesheet">
+    <!-- Select2 -->
+    <link href="{!! asset('assets/vendors/select2/dist/css/select2.min.css') !!}" rel="stylesheet">
+    <!-- Switchery -->
+    <link href="{!! asset('assets/vendors/switchery/dist/switchery.min.css') !!}" rel="stylesheet">
+    <!-- starrr -->
+    <link href="{!! asset('assets/vendors/starrr/dist/starrr.css') !!}" rel="stylesheet">
 
     <!-- bootstrap-progressbar -->
     <link href="{!! asset('assets/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css') !!}" rel="stylesheet">
@@ -89,6 +97,11 @@
 
     <!-- Custom Theme Scripts -->
     <script src="{!! asset('assets/build/js/custom.min.js') !!}"></script>
+
+        <!-- Switchery -->
+    <script src="{!! asset('assets/vendors/switchery/dist/switchery.min.js') !!}"></script>
+    <!-- Select2 -->
+    <script src="{!! asset('assets/vendors/select2/dist/js/select2.full.min.js') !!}"></script>
 
   </body>
 </html>
