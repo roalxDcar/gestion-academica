@@ -5,7 +5,7 @@
     <div class="">
         <div class="page-title">
         <div class="title_left">
-            <Ih3>Administrador</Ih3>
+            <h3>Administrador</h3>
         </div>
 
 
@@ -39,32 +39,32 @@
                     @csrf
                     @method('PUT')
 
-                    <div class="col-md-4 col-sm-12  form-group">
+                    <div class="col-md-4 col-sm-12 col-xs-12  form-group">
                         <label>Nombre</label>
                         <input type="text" placeholder="Introduza su Nombre" class="form-control" id="name" name="name" required value="{{ $user->name }}">
                     </div>
 
-                    <div class="col-md-4 col-sm-12  form-group">
+                    <div class="col-md-4 col-sm-12 col-xs-12  form-group">
                         <label>Apellido Paterno</label>
                         <input type="text" placeholder="Introduzca Ap. Parterno" class="form-control" name="first_name" required value="{{ $user->first_name }}">
                     </div>
 
-                    <div class="col-md-4 col-sm-12  form-group">
+                    <div class="col-md-4 col-sm-12 col-xs-12 form-group">
                         <label>Apellido Materno</label>
                     <input type="text" placeholder="Introduzca Ap. Materno" class="form-control" name="last_name" required value="{{$user->last_name}}">
                     </div>
 
-                    <div class="col-md-4 col-sm-12  form-group">
+                    <div class="col-md-4 col-sm-12 col-xs-12 form-group">
                         <label>Cedula de Identidad</label>
                         <input type="text" placeholder="Introduzca C.I." class="form-control" name="ci" value="{{$user->ci}}">
                     </div>
 
-                     <div class="col-md-4 col-sm-12  form-group">
+                     <div class="col-md-4 col-sm-12 col-xs-12 form-group">
                         <label>Correo Electronico</label>
                         <input type="text" placeholder="Introduzca Email" class="form-control" name="email" value="{{$user->email}}">
                      </div>
 
-                      <div class="col-md-4 col-sm-12  form-group">
+                      <div class="col-md-4 col-sm-12 col-xs-12 form-group">
                         <label>Genero</label><br>
                         <div id="gender" class="btn-group" data-toggle="buttons">
                             <div class="radio">
@@ -75,24 +75,24 @@
                       </div>
 
 
-                      <div class="col-md-8 col-sm-12  form-group">
+                      <div class="col-md-8 col-sm-12 col-xs-12 form-group">
                         <label>Direccion</label>
                         <input type="text" placeholder="Introduzca su Direccion Nro/Zona/Av. o Calle" class="form-control" name="address" value="{{$user->address}}">
                       </div>
 
-                      <div class="col-md-4 col-sm-12  form-group">
+                      <div class="col-md-4 col-sm-12 col-xs-12 form-group">
                         <label>Celular</label>
                         <input type="number" placeholder="Instroduzca Celular" class="form-control" name="mobil" value="{{$user->mobil}}">
                       </div>
 
-                      <div class="col-md-4 col-sm-12  form-group">
+                      <div class="col-md-4 col-sm-12 col-xs-12 form-group">
                         <label>Fecha de Nacimiento</label>
                         <input id="date-name" class="form-control" type="date" name="date_happy">
                       </div>
 
-                      <div class="col-md-4 col-sm-12  form-group">
+                      <div class="col-md-4 col-sm-12 col-xs-12 form-group">
                         <label>Estado Civil</label>
-                        <select class="form-control" name="civil_state">
+                        <select class="form-control col-md-4 col-sm-12 col-xs-12" name="civil_state">
 
                             <option>Seleccione.......</option>
 
@@ -107,9 +107,9 @@
                       </div>
 
 
-                      <div class="col-md-4 col-sm-12  form-group">
+                      <div class="col-md-4 col-sm-12 col-xs-12 form-group">
                         <label>Provincia</label>
-                        <select class="form-control" name="province">
+                        <select class="form-control col-md-4 col-sm-12 col-xs-12" name="province">
                             <option>Seleccione...........</option>
                                 @foreach ($province as $prov)
                         <option value="{{ $prov->province_id }}" {{$prov->province_id==$user->province_id?'selected':''}}>
@@ -124,9 +124,9 @@
                     <div class="item form-group">
                         <div class="col-md-6 col-sm-6 offset-md-3">
                         <a href="{{ route('user.get') }}">
-                            <button class="btn btn-primary" type="button">Cancelar</button>
+                            <button class="btn btn-default" type="button">Cancelar</button>
                         </a>
-                        <button type="submit" class="btn btn-success">Actualizar</button>
+                        <button type="submit" class="btn btn-primary">Actualizar</button>
                         </div>
                     </div>
 

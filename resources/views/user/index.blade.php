@@ -79,7 +79,7 @@
                                         <th class="text-center">
                                             Estado
                                         </th>
-                                        <th>
+                                        <th class="text-center">
                                             Acciones
                                         </th>
                                     </tr>
@@ -112,16 +112,21 @@
                                             {{ $user->mobil }}
                                         </td>
                                         <td class="text-center">
-                                            <button class="btn btn-round btn-warning btn-xs" type="button">
-                                                Activo
+                                            <button class="btn btn-round btn-{{ $user->state?'success':'danger' }} btn-xs" type="button">
+                                                {{ $user->state?'Activo':'Inactivo' }}
                                             </button>
                                         </td>
-                                        <td>
+                                        <td class="text-center">
                                             <a href="{{ route('user.edit', $user->id) }}">
-                                                <button class="btn btn-info btn-xs" type="button">
+                                                <button class="btn btn-primary btn-xs" type="button">
                                                     <i class="fa fa-edit">
                                                     </i>
-                                                    Editar
+                                                </button>
+                                            </a>
+                                            <a href="{{ route('user.state',$user->id) }}" title="{{ $user->state?'Desactivar':'Activar' }}">
+                                                <button class="btn btn-{{ $user->state?'danger':'success' }} btn-xs modalState" type="submit">
+                                                    <i class="fa fa-{{ $user->state?'times':'check' }}">
+                                                    </i>
                                                 </button>
                                             </a>
                                         </td>
@@ -129,6 +134,9 @@
                                     @endforeach
                                 </tbody>
                             </table>
+                            <div class="text-center">
+                                {{ $users->links() }}
+                            </div>
                         </div>
                     </div>
                 </div>

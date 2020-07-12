@@ -20,7 +20,7 @@ class UsersTableSeeder extends Seeder
             'first_name' => 'M',
             'last_name' => 'M',
             'ci' => 12345678,
-            'email'=>'roalmollericona@gmail.com',
+            'email'=>'josy.bjos@gmail.com',
             'password'=>bcrypt(12345678),
             'gender' => 1,
             'address' => 'aaaaa',

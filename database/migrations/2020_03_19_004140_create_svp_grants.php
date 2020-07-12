@@ -15,6 +15,7 @@ class CreateSvpGrants extends Migration
     {
         Schema::create('svp_grants', function (Blueprint $table) {
             $table->increments('grant_id');
+            $table->string('name');
             $table->string('description');
             $table->integer('state')->default(1);
             $table->timestamps();
