@@ -16,7 +16,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        $users = User::orderBy('id', 'ASC')->paginate(5);
         return view('user.index', [
             'users' => $users,
         ]);
@@ -135,13 +135,17 @@ class UserController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
+     * Cambiar estado del administrador.
+     * URL: adminitrador/estado
+     * Method: PUT
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function state($id)
     {
-        //
+        //findOrFail() Generacion de Pantallas de Error de Laravel
+        $user = User::findOrFail($id);
+        $user->state = ($user->state ? 0 : 1);
+        $user->update();
+        return redirect()->route('user.get');
     }
 }

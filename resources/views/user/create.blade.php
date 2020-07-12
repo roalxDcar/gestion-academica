@@ -4,9 +4,9 @@
     <div class="">
         <div class="page-title">
             <div class="title_left">
-                <ih3>
+                <h3>
                     Administrador
-                </ih3>
+                </h3>
             </div>
         </div>
         <div class="clearfix">
@@ -24,42 +24,42 @@
                     <div class="x_content">
                         <form action="{{ route('user.store') }}" class="form-horizontal form-label-left" data-parsley-validate="" id="demo-form2" method="POST">
                             @csrf
-                            <div class="col-md-4 col-sm-12 form-group">
+                            <div class="col-md-4 col-sm-12 col-xs-12 form-group">
                                 <label>
                                     Nombre
                                 </label>
                                 <input class="form-control" id="name" name="name" placeholder="Introduza su Nombre" required="" type="text">
                                 </input>
                             </div>
-                            <div class="col-md-4 col-sm-12 form-group">
+                            <div class="col-md-4 col-sm-12 col-xs-12 form-group">
                                 <label>
                                     Apellido Paterno
                                 </label>
                                 <input class="form-control" name="first_name" placeholder="Introduzca Ap. Parterno" required="" type="text">
                                 </input>
                             </div>
-                            <div class="col-md-4 col-sm-12 form-group">
+                            <div class="col-md-4 col-sm-12 col-xs-12 form-group">
                                 <label>
                                     Apellido Materno
                                 </label>
                                 <input class="form-control" name="last_name" placeholder="Introduzca Ap. Materno" required="" type="text">
                                 </input>
                             </div>
-                            <div class="col-md-4 col-sm-12 form-group">
+                            <div class="col-md-4 col-sm-12 col-xs-12 form-group">
                                 <label>
                                     Cedula de Identidad
                                 </label>
                                 <input class="form-control" name="ci" placeholder="Introduzca C.I." type="text">
                                 </input>
                             </div>
-                            <div class="col-md-4 col-sm-12 form-group">
+                            <div class="col-md-4 col-sm-12 col-xs-12 form-group">
                                 <label>
                                     Correo Electronico
                                 </label>
                                 <input class="form-control" name="email" placeholder="Introduzca Email" type="text">
                                 </input>
                             </div>
-                            <div class="col-md-4 col-sm-12 form-group">
+                            <div class="col-md-4 col-sm-12 col-xs-12 form-group">
                                 <label>
                                     Genero
                                 </label>
@@ -80,28 +80,28 @@
                                     </div>
                                 </br>
                             </div>
-                            <div class="col-md-8 col-sm-12 form-group">
+                            <div class="col-md-8 col-sm-12 col-xs-12 form-group">
                                 <label>
                                     Direccion
                                 </label>
                                 <input class="form-control" name="address" placeholder="Introduzca su Direccion Nro/Zona/Av. o Calle" type="text">
                                 </input>
                             </div>
-                            <div class="col-md-4 col-sm-12 form-group">
+                            <div class="col-md-4 col-sm-12 col-xs-12 form-group">
                                 <label>
                                     Celular
                                 </label>
                                 <input class="form-control" name="mobil" placeholder="Instroduzca Celular" type="number">
                                 </input>
                             </div>
-                            <div class="col-md-4 col-sm-12 form-group">
+                            <div class="col-md-4 col-sm-12 col-xs-12 form-group">
                                 <label>
                                     Fecha de Nacimiento
                                 </label>
                                 <input class="form-control" id="date-name" name="date_happy" type="date">
                                 </input>
                             </div>
-                            <div class="col-md-4 col-sm-12 form-group">
+                            <div class="col-md-4 col-sm-12 col-xs-12 form-group">
                                 <label>
                                     Estado Civil
                                 </label>
@@ -116,7 +116,7 @@
                                     @endforeach
                                 </select>
                             </div>
-                            <div class="col-md-4 col-sm-12">
+                            <div class="col-md-4 col-sm-12 col-xs-12 form-group">
                                 <label>
                                     Provincia
                                 </label>
@@ -140,9 +140,6 @@
                                                     Cancelar
                                                 </button>
                                             </a>
-                                            <button class="btn btn-warning" type="reset">
-                                                Limpiar
-                                            </button>
                                             <button class="btn btn-primary" type="submit">
                                                 Guardar
                                             </button>
