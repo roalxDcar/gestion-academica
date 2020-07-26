@@ -13,4 +13,9 @@ class Role extends Model
     {
         return $this->belongsToMany(Grant::class, 'svp_role_grants', 'role_id', 'grant_id');
     }
+
+    public function rol()
+    {
+        return $this->hasMany(RoleGrant::class, 'role_id');
+    }
 }

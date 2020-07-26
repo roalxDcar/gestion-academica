@@ -10,6 +10,7 @@
 
     <title>Sistema de Gestion Academica | Fe y Alegria </title>
 
+    <script  type="text/javascript" src="{!! asset('assets/jquery/jquery-3.4.1.min.js') !!}"></script>
     <!-- Bootstrap -->
     <link href="{!! asset('assets/vendors/bootstrap/dist/css/bootstrap.min.css') !!}" rel="stylesheet">
     <!-- Font Awesome -->
@@ -56,7 +57,6 @@
         <!-- /footer content -->
       </div>
     </div>
-
     <!-- jQuery -->
     <script src="{!! asset('assets/vendors/jquery/dist/jquery.min.js') !!}"></script>
     <!-- Bootstrap -->
@@ -102,6 +102,5 @@
     <script src="{!! asset('assets/vendors/switchery/dist/switchery.min.js') !!}"></script>
     <!-- Select2 -->
     <script src="{!! asset('assets/vendors/select2/dist/js/select2.full.min.js') !!}"></script>
-
   </body>
 </html>

@@ -31,7 +31,6 @@
                                     <input type="text" id="first-name" name="description" required="required" class="form-control " placeholder="Ingrese Descripción">
                                 </div>
                             </div>
-
                             <div class="x_title">
                                     <h2>
                                         Lista de Permisos
@@ -40,39 +39,20 @@
                                     </div>
                                 </div>
                       <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Switch</label>
-                        <div class="col-md-9 col-sm-9 col-xs-12">
+                        <div class="col-md-12col-sm-12 col-xs-12">
                           <div class="">
-                            <label>
-                              <input type="checkbox" class="js-switch" checked /> Checked
-                            </label>
+                              @foreach ($grants as $grant )
+                              <div class="col-md-4 col-sm-4 col-xs-12">
+                              <label>
+                              <input type="checkbox" class="js-switch" value="{{ $grant->grant_id}}" name="grants[]"/> {{ $grant->name }}
+                              </label>
+                            </div>
+                              @endforeach
+
                           </div>
-                          <div class="">
-                            <label>
-                              <input type="checkbox" class="js-switch" /> Unchecked
-                            </label>
-                          </div>
-                          <div class="">
-                            <label>
-                              <input type="checkbox" class="js-switch" disabled="disabled" /> Disabled
-                            </label>
-                          </div>
-                          <div class="">
-                            <label>
-                              <input type="checkbox" class="js-switch" disabled="disabled" checked="checked" /> Disabled Checked
-                            </label>
-                          </div>
+
                         </div>
                       </div>
-
-
-
-
-
-
-
-
-
 
                             <div class="col-md-12 col-sm-12 col-xs-12 text-right" style="padding-top: 15px;">
                                 <div class="item form-group">

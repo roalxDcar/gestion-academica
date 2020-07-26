@@ -38,88 +38,97 @@
                     <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" action="{{ route('user.update', $user->id) }}" method="POST">
                     @csrf
                     @method('PUT')
+                    <div class="col-md-12 col-sm-12 col-xs-12 form-group">
+                        <div class="col-md-4 col-sm-12 col-xs-12  form-group">
+                            <label>Nombre</label>
+                            <input type="text" placeholder="Introduza su Nombre" class="form-control" id="name" name="name" required value="{{ $user->name }}">
+                        </div>
 
-                    <div class="col-md-4 col-sm-12 col-xs-12  form-group">
-                        <label>Nombre</label>
-                        <input type="text" placeholder="Introduza su Nombre" class="form-control" id="name" name="name" required value="{{ $user->name }}">
+                        <div class="col-md-4 col-sm-12 col-xs-12  form-group">
+                            <label>Apellido Paterno</label>
+                            <input type="text" placeholder="Introduzca Ap. Parterno" class="form-control" name="first_name" required value="{{ $user->first_name }}">
+                        </div>
+
+                        <div class="col-md-4 col-sm-12 col-xs-12 form-group">
+                            <label>Apellido Materno</label>
+                        <input type="text" placeholder="Introduzca Ap. Materno" class="form-control" name="last_name" required value="{{$user->last_name}}">
+                        </div>
                     </div>
+                    <div class="col-md-12 col-sm-12 col-xs-12 form-group">
+                        <div class="col-md-4 col-sm-12 col-xs-12 form-group">
+                            <label>Cedula de Identidad</label>
+                            <input type="text" placeholder="Introduzca C.I." class="form-control" name="ci" value="{{$user->ci}}">
+                        </div>
 
-                    <div class="col-md-4 col-sm-12 col-xs-12  form-group">
-                        <label>Apellido Paterno</label>
-                        <input type="text" placeholder="Introduzca Ap. Parterno" class="form-control" name="first_name" required value="{{ $user->first_name }}">
-                    </div>
+                        <div class="col-md-4 col-sm-12 col-xs-12 form-group">
+                            <label>Correo Electronico</label>
+                            <input type="text" placeholder="Introduzca Email" class="form-control" name="email" value="{{$user->email}}">
+                        </div>
 
-                    <div class="col-md-4 col-sm-12 col-xs-12 form-group">
-                        <label>Apellido Materno</label>
-                    <input type="text" placeholder="Introduzca Ap. Materno" class="form-control" name="last_name" required value="{{$user->last_name}}">
-                    </div>
-
-                    <div class="col-md-4 col-sm-12 col-xs-12 form-group">
-                        <label>Cedula de Identidad</label>
-                        <input type="text" placeholder="Introduzca C.I." class="form-control" name="ci" value="{{$user->ci}}">
-                    </div>
-
-                     <div class="col-md-4 col-sm-12 col-xs-12 form-group">
-                        <label>Correo Electronico</label>
-                        <input type="text" placeholder="Introduzca Email" class="form-control" name="email" value="{{$user->email}}">
-                     </div>
-
-                      <div class="col-md-4 col-sm-12 col-xs-12 form-group">
-                        <label>Genero</label><br>
-                        <div id="gender" class="btn-group" data-toggle="buttons">
-                            <div class="radio">
-                                <label><input type="radio" name="gender" value="1" {{$user->gender==1?'checked':''}}> Masculino </label> &nbsp;
-                                <label><input type="radio" name="gender" value="0" {{$user->gender==0?'checked':''}}> Femenino </label>
+                        <div class="col-md-4 col-sm-12 col-xs-12 form-group">
+                            <label>Genero</label><br>
+                            <div id="gender" class="btn-group" data-toggle="buttons">
+                                <div class="radio">
+                                    <label><input type="radio" name="gender" value="1" {{$user->gender==1?'checked':''}}> Masculino </label> &nbsp;
+                                    <label><input type="radio" name="gender" value="0" {{$user->gender==0?'checked':''}}> Femenino </label>
+                                </div>
                             </div>
                         </div>
-                      </div>
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-xs-12 form-group">
+                        <div class="col-md-4 col-sm-12 col-xs-12 form-group">
+                            <label>Direccion</label>
+                            <input type="text" placeholder="Introduzca su Direccion Nro/Zona/Av. o Calle" class="form-control" name="address" value="{{$user->address}}">
+                        </div>
 
+                        <div class="col-md-4 col-sm-12 col-xs-12 form-group">
+                            <label>Celular</label>
+                            <input type="number" placeholder="Instroduzca Celular" class="form-control" name="mobil" value="{{$user->mobil}}">
+                        </div>
 
-                      <div class="col-md-8 col-sm-12 col-xs-12 form-group">
-                        <label>Direccion</label>
-                        <input type="text" placeholder="Introduzca su Direccion Nro/Zona/Av. o Calle" class="form-control" name="address" value="{{$user->address}}">
-                      </div>
+                        <div class="col-md-4 col-sm-12 col-xs-12 form-group">
+                            <label>Fecha de Nacimiento</label>
+                        <input id="date-name" class="form-control" type="date" name="date_happy" value="{{ $user->year }}-{{ $user->month }}-{{ $user->day }}">
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-xs-12 form-group">
+                        <div class="col-md-4 col-sm-12 col-xs-12 form-group">
+                            <label>Estado Civil</label>
+                            <select class="form-control col-md-4 col-sm-12 col-xs-12" name="civil_state">
+                                <option>Seleccione.......</option>
+                                @foreach ($civil_state as $civil)
+                                <option value="{{ $civil->civil_state_id }}" {{$civil->civil_state_id==$user->civil_state_id?'selected':''}}>
+                                        {{ $civil->description }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
 
-                      <div class="col-md-4 col-sm-12 col-xs-12 form-group">
-                        <label>Celular</label>
-                        <input type="number" placeholder="Instroduzca Celular" class="form-control" name="mobil" value="{{$user->mobil}}">
-                      </div>
+                        <div class="col-md-4 col-sm-12 col-xs-12 form-group">
+                                <label>Departamento</label>
+                                <select class="form-control col-md-4 col-sm-12 col-xs-12 department" name="department" id="department">
+                                    <option value=""> Seleccione departamento </option>
+                                    @foreach ($departments as $department)
+                                    <option value="{{ $department->department_id }}" {{ $department->department_id==$user->province['department_id']?'selected':'' }}>
+                                        {{ $department->name }}
+                                    </option>
+                                    @endforeach
+                                </select>
 
-                      <div class="col-md-4 col-sm-12 col-xs-12 form-group">
-                        <label>Fecha de Nacimiento</label>
-                        <input id="date-name" class="form-control" type="date" name="date_happy">
-                      </div>
+                            </div>
 
-                      <div class="col-md-4 col-sm-12 col-xs-12 form-group">
-                        <label>Estado Civil</label>
-                        <select class="form-control col-md-4 col-sm-12 col-xs-12" name="civil_state">
-
-                            <option>Seleccione.......</option>
-
-                            @foreach ($civil_state as $civil)
-                               <option value="{{ $civil->civil_state_id }}" {{$civil->civil_state_id==$user->civil_state_id?'selected':''}}>
-                                    {{ $civil->description }}
-                                </option>
-                            @endforeach
-
-                        </select>
-
-                      </div>
-
-
-                      <div class="col-md-4 col-sm-12 col-xs-12 form-group">
-                        <label>Provincia</label>
-                        <select class="form-control col-md-4 col-sm-12 col-xs-12" name="province">
-                            <option>Seleccione...........</option>
-                                @foreach ($province as $prov)
-                        <option value="{{ $prov->province_id }}" {{$prov->province_id==$user->province_id?'selected':''}}>
-                                    {{ $prov->name }}
+                        <div class="col-md-4 col-sm-12 col-xs-12 form-group">
+                            <label>Provincia</label>
+                            <select class="form-control col-md-4 col-sm-12 col-xs-12 province" name="province">
+                                @foreach ($provinces as $province )
+                                <option value="{{ $province->province_id }}" {{ $province->province_id==$user->province_id?'selected':'' }}>
+                                    {{ $province->name }}
                                 </option>
                                 @endforeach
-                        </select>
 
-                      </div>
-
+                            </select>
+                        </div>
+                    </div>
                     <div class="ln_solid"></div>
                     <div class="item form-group">
                         <div class="col-md-6 col-sm-6 offset-md-3">
@@ -137,4 +146,31 @@
         </div>
     </div>
 </div>
+<script>
+        $('.department').on('click',function(){
+            let arm="";
+            $('.province').html('<option>Cargando...</option>');
+            let department_id = $('#department').val();
+            console.log(department_id);
+            if(department_id != ""){
+                $.ajax({
+                    url: "{{ url('provincia') }}/"+department_id,
+                    headers: {'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr('content')},
+                    method: "GET",
+
+                    success:function(data){
+                        console.log(data);
+                        // data.forEach(province => )
+                        for(i in data){
+                            arm += `<option value="`+ data[i].province_id +`">` + data[i].name +`</option>`;
+                        }
+                        console.log(arm);
+                        $('.province').html(arm).removeAttr('disabled');
+                    }
+                });
+            }else{
+                $('.province').html(`<option value="">Seleccione provincia</option>`).attr('disabled','disabled');
+            }
+        });
+</script>
 @endsection

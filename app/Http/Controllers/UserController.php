@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\CivilState;
 use App\Province;
 use App\User;
+use App\Department;
 use Illuminate\Http\Request;
+use App\Http\Requests\UserStoreRequest;
 
 class UserController extends Controller
 {
@@ -20,7 +22,6 @@ class UserController extends Controller
         return view('user.index', [
             'users' => $users,
         ]);
-
     }
 
     /**
@@ -31,11 +32,11 @@ class UserController extends Controller
     public function create()
     {
         $civil_state = CivilState::all();
-        $province    = Province::all();
+        $departments  = Department::all();
 
         return view('user.create', [
             'civil_state' => $civil_state,
-            'province'    => $province,
+            'departments'    => $departments,
         ]);
     }
 
@@ -45,8 +46,9 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserStoreRequest $request)
     {
+
         // dd($request->date_happy->date("Y")); //Prueba para verificar los datos del formulario
 
         $user = new User;
@@ -93,15 +95,18 @@ class UserController extends Controller
     public function edit($id)
     {
         //findOrfail => Buscador de un dato especifico por id
-        $user = User::findOrfail($id);
-
+        $user = User::with('province')->findOrfail($id);
+        //return $user;
         $civil_state = CivilState::all();
-        $province    = Province::all();
+        $provinces    = Province::where('department_id',$user->province->department_id)->get();
+        $departments  = Department::all();
 
         return view('user.editar', [
             'civil_state' => $civil_state,
-            'province'    => $province,
-            'user'        => $user]);
+            'departments'    => $departments,
+            'user'        => $user,
+            'provinces' => $provinces
+            ]);
     }
 
     /**
@@ -147,5 +152,22 @@ class UserController extends Controller
         $user->state = ($user->state ? 0 : 1);
         $user->update();
         return redirect()->route('user.get');
+    }
+
+    public function searchProvince($id){
+        $province = Province::where('department_id',$id)->get();
+        return $province;
+    }
+
+    public function searchUser(Request $request){
+
+        $users = User::orderBy('id', 'DESC')
+            ->where('ci', 'LIKE', "%$request->buscar%")
+            ->paginate(5);
+
+        return view('user.index', [
+            'users' => $users,
+            'search' => $request->buscar,
+        ]);
     }
 }

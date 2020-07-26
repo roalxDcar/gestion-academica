@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Role;
+use App\Grant;
 use Illuminate\Http\Request;
 
 class RoleController extends Controller
@@ -30,8 +31,13 @@ class RoleController extends Controller
      */
     public function create()
     {
+       /*  $rol = Role::where('role_id', 2)->with('grants')->first();
+        return response()->json(['rol' => $rol]); */
 
-        return view('rol.create');
+        $grants = Grant::orderBy('grant_id', 'ASC')->get();
+        return view('rol.create', [
+            'grants' => $grants,
+        ]);
     }
 
     /**
@@ -45,6 +51,8 @@ class RoleController extends Controller
         $rol              = new Role;
         $rol->description = $request->description;
         $rol->save();
+        $rol = Role::findOrFail($rol->role_id);
+        $rol->grants()->attach($request->grants);
         return redirect()->route('role.get');
     }
 
@@ -64,6 +72,7 @@ class RoleController extends Controller
     //     $rol = Role::where('role_id', 14)->with('grants')->first();
     //     return response()->json(['rol' => $rol]);
     // }
+
     /**
      * Metodo para editar el Formulario
      *
@@ -71,10 +80,18 @@ class RoleController extends Controller
      */
     public function edit($id)
     {
-        $role = Role::findOrFail($id);
-
+        $roles = Role::with('rol')->findOrFail($id);
+        $grants = Grant::orderBy('grant_id', 'ASC')->get();
+        //return response()->json(['role'=>$role]);
+        //$role->grants()->attach($request->grants);
+        $array[]=0;
+        foreach($roles->rol as $role){
+            $array[] = $role->grant_id;
+        }
         return view('rol.editar', [
-            'role' => $role,
+            'role' => $roles,
+            'grants' => $grants,
+            'array' => $array,
         ]);
     }
 
@@ -86,7 +103,9 @@ class RoleController extends Controller
         $role = Role::findOrfail($id);
 
         $role->description = $request->description;
-        $role->save();
+        $role->update();
+        $role = Role::findOrFail($role->role_id);
+        $role->grants()->sync($request->grants);
         return redirect()->route('role.get');
     }
 

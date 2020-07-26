@@ -49,6 +49,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/editar-usuario/{id}', 'UserController@edit')->name('user.edit');
     Route::put('/editar-usuario/actualizar/{id}', 'UserController@update')->name('user.update');
     Route::get('/usuario/estado/{id}','UserController@state')->name('user.state');
+    //Obtener Provincia
+    Route::get('/provincia/{id}', 'UserController@searchProvince')->name('search.province');
+    // Buscar Usuario
+    Route::post('/buscarusuario', 'UserController@searchUser')->name('search.user');
 
 
     //Roles

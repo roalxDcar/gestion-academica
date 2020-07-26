@@ -16,7 +16,7 @@
                 <div class="x_panel">
                     <div class="x_title">
                         <h2>
-                            Nuevo Rol
+                            Modificar Rol
                         </h2>
                         <div class="clearfix">
                         </div>
@@ -32,6 +32,26 @@
                                     <input type="text" id="first-name" name="description" required="required" class="form-control " required value="{{ $role->description }}">
                                 </div>
                             </div>
+
+                            <div class="x_title">
+                                    <h2>
+                                        Lista de Permisos
+                                    </h2>
+                                    <div class="clearfix">
+                                    </div>
+                                </div>
+                      <div class="form-group">
+                        <div class="col-md-12col-sm-12 col-xs-12">
+                          <div class="">
+                              @foreach ($grants as $grant )
+                              <div class="col-md-4 col-sm-4 col-xs-12">
+                              <label>
+                              <input type="checkbox" class="js-switch" value="{{ $grant->grant_id}}" name="grants[]" {{ array_search($grant->grant_id, $array, false)?"checked":"" }} /> {{ $grant->name }}
+                              </label>
+                            </div>
+                              @endforeach
+
+                          </div>
 
                             <div class="ln_solid"></div>
                             <div class="item form-group">

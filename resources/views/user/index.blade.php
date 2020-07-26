@@ -33,15 +33,18 @@
                         </h2>
                         <div class="title_right">
                             <div class="col-md-5 col-sm-5 form-group pull-right top_search">
+                                <form action="{{ route('search.user') }}" method="POST">
+                                @csrf
                                 <div class="input-group">
-                                    <input class="form-control" placeholder="Ingresar Cedula de Identidad" type="text">
-                                        <span class="input-group-btn">
-                                            <button class="btn btn-primary" style="color:white;" type="button">
-                                                Buscar
-                                            </button>
-                                        </span>
-                                    </input>
+                                <input class="form-control" placeholder="Ingresar Cedula de Identidad" type="text" name="buscar" value="{{ !empty($search)?$search:"" }}">
+                                            <span class="input-group-btn">
+                                                <button class="btn btn-primary" style="color:white;" type="submit">
+                                                    Buscar
+                                                </button>
+                                            </span>
+                                        </input>
                                 </div>
+                                </form>
                             </div>
                         </div>
                         <div class="clearfix">
@@ -112,9 +115,9 @@
                                             {{ $user->mobil }}
                                         </td>
                                         <td class="text-center">
-                                            <button class="btn btn-round btn-{{ $user->state?'success':'danger' }} btn-xs" type="button">
+                                            <spam class="label label-{{ $user->state?'success':'danger' }}" >
                                                 {{ $user->state?'Activo':'Inactivo' }}
-                                            </button>
+                                            </spam>
                                         </td>
                                         <td class="text-center">
                                             <a href="{{ route('user.edit', $user->id) }}">
