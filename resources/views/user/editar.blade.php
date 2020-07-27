@@ -88,7 +88,7 @@
 
                         <div class="col-md-4 col-sm-12 col-xs-12 form-group">
                             <label>Fecha de Nacimiento</label>
-                        <input id="date-name" class="form-control" type="date" name="date_happy" value="{{ $user->year }}-{{ $user->month }}-{{ $user->day }}">
+                        <input id="date-name" class="form-control" type="date" name="date_happy" value="{{ $date }}">
                         </div>
                     </div>
                     <div class="col-md-12 col-sm-12 col-xs-12 form-group">

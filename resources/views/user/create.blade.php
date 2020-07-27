@@ -203,9 +203,13 @@
 </div>
 <script>
     $(document).ready(function(){
-        load_province();
+        if($('#department').val() != ""){
+            console.log("departamento");
+            load_province();
+        }
     });
-    $('.department').on('click',function(){
+
+    $('.department').on('change',function(){
         load_province();
     });
 
@@ -214,8 +218,6 @@
         $('.province').html('<option>Cargando...</option>');
         let department_id = $('#department').val();
         if(department_id != ""){
-
-            console.log(this.prueba);
             $.ajax({
                 url: "{{ url('provincia') }}/"+department_id,
                 headers: {'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr('content')},

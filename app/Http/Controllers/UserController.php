@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\CivilState;
+use App\Department;
+use App\Http\Requests\UserStoreRequest;
 use App\Province;
 use App\User;
-use App\Department;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
-use App\Http\Requests\UserStoreRequest;
 
 class UserController extends Controller
 {
@@ -32,11 +33,11 @@ class UserController extends Controller
     public function create()
     {
         $civil_state = CivilState::all();
-        $departments  = Department::all();
+        $departments = Department::all();
 
         return view('user.create', [
             'civil_state' => $civil_state,
-            'departments'    => $departments,
+            'departments' => $departments,
         ]);
     }
 
@@ -98,15 +99,18 @@ class UserController extends Controller
         $user = User::with('province')->findOrfail($id);
         //return $user;
         $civil_state = CivilState::all();
-        $provinces    = Province::where('department_id',$user->province->department_id)->get();
-        $departments  = Department::all();
+        $provinces   = Province::where('department_id', $user->province->department_id)->get();
+        $departments = Department::all();
+        // Se hara uso de la función Carbon para dar un nuevo formato a la fecha de nacimiento
+        $date = Carbon::create($user->year, $user->month, $user->day)->format('Y-m-d');
 
         return view('user.editar', [
             'civil_state' => $civil_state,
-            'departments'    => $departments,
+            'departments' => $departments,
             'user'        => $user,
-            'provinces' => $provinces
-            ]);
+            'provinces'   => $provinces,
+            'date'        => $date,
+        ]);
     }
 
     /**
@@ -148,25 +152,27 @@ class UserController extends Controller
     public function state($id)
     {
         //findOrFail() Generacion de Pantallas de Error de Laravel
-        $user = User::findOrFail($id);
+        $user        = User::findOrFail($id);
         $user->state = ($user->state ? 0 : 1);
         $user->update();
         return redirect()->route('user.get');
     }
 
-    public function searchProvince($id){
-        $province = Province::where('department_id',$id)->get();
+    public function searchProvince($id)
+    {
+        $province = Province::where('department_id', $id)->get();
         return $province;
     }
 
-    public function searchUser(Request $request){
+    public function searchUser(Request $request)
+    {
 
         $users = User::orderBy('id', 'DESC')
             ->where('ci', 'LIKE', "%$request->buscar%")
             ->paginate(5);
 
         return view('user.index', [
-            'users' => $users,
+            'users'  => $users,
             'search' => $request->buscar,
         ]);
     }
