@@ -175,6 +175,9 @@
                                             <select class="form-control province" name="province" disabled="disabled" >
                                                 <option value="">Seleccione provincia</option>
                                             </select>
+                                            @if($errors->has('province'))
+                                                <div class="text-danger">{{ $errors->first('province') }}</div>
+                                            @endif
                                         </div>
                             </div>
 
@@ -204,7 +207,6 @@
 <script>
     $(document).ready(function(){
         if($('#department').val() != ""){
-            console.log("departamento");
             load_province();
         }
     });
@@ -214,7 +216,7 @@
     });
 
     function load_province(){
-        let arm="";
+        let arm = "";
         $('.province').html('<option>Cargando...</option>');
         let department_id = $('#department').val();
         if(department_id != ""){
@@ -223,12 +225,11 @@
                 headers: {'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr('content')},
                 method: "GET",
                 success:function(data){
-                    // console.log(data);
-                    // data.forEach(province => )
                     arm = `<option value="">Seleccione provincia</option>`;
                     for(i in data){
                         arm += `<option value="`+ data[i].province_id +`">` + data[i].name +`</option>`;
                     }
+                    console.log(arm);
                     $('.province').html(arm).removeAttr('disabled');
                 }
             });

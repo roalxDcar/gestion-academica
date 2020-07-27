@@ -119,13 +119,8 @@
 
                         <div class="col-md-4 col-sm-12 col-xs-12 form-group">
                             <label>Provincia</label>
-                            <select class="form-control col-md-4 col-sm-12 col-xs-12 province" name="province">
-                                @foreach ($provinces as $province )
-                                <option value="{{ $province->province_id }}" {{ $province->province_id==$user->province_id?'selected':'' }}>
-                                    {{ $province->name }}
-                                </option>
-                                @endforeach
-
+                            <select class="form-control col-md-4 col-sm-12 col-xs-12 province" name="province" id="province">
+                                <option value="">Seleccione provincia</option>
                             </select>
                         </div>
                     </div>
@@ -147,30 +142,39 @@
     </div>
 </div>
 <script>
-        $('.department').on('click',function(){
-            let arm="";
-            $('.province').html('<option>Cargando...</option>');
-            let department_id = $('#department').val();
-            console.log(department_id);
-            if(department_id != ""){
-                $.ajax({
-                    url: "{{ url('provincia') }}/"+department_id,
-                    headers: {'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr('content')},
-                    method: "GET",
+    $(document).ready(function(){
+        if($('#department').val() != ""){
+            load_province();
+        }
+    });
 
-                    success:function(data){
-                        console.log(data);
-                        // data.forEach(province => )
-                        for(i in data){
-                            arm += `<option value="`+ data[i].province_id +`">` + data[i].name +`</option>`;
-                        }
-                        console.log(arm);
-                        $('.province').html(arm).removeAttr('disabled');
+    $('.department').on('change',function(){
+        load_province();
+    });
+
+    function load_province(){
+        let arm="";
+        $('.province').html('<option>Cargando...</option>');
+        let department_id = $('#department').val();
+        if(department_id != ""){
+            $.ajax({
+                url: "{{ url('provincia') }}/"+department_id,
+                headers: {'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr('content')},
+                method: "GET",
+                success:function(data){
+                    // console.log(data);
+                    // data.forEach(province => )
+                    arm = `<option value="">Seleccione provincia</option>`;
+                    for(i in data){
+                        arm += `<option value="`+ data[i].province_id +`"`+ ({{ $user->province_id }} == data[i].province_id ? 'selected' : '') +`>` + data[i].name +`</option>`;
                     }
-                });
-            }else{
-                $('.province').html(`<option value="">Seleccione provincia</option>`).attr('disabled','disabled');
-            }
-        });
+                    console.log(arm);
+                    $('.province').html(arm).removeAttr('disabled');
+                }
+            });
+        }else{
+            $('.province').html(`<option value="">Seleccione provincia</option>`).attr('disabled','disabled');
+        }
+    }
 </script>
 @endsection

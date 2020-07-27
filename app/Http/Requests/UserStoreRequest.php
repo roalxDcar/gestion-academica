@@ -35,6 +35,7 @@ class UserStoreRequest extends FormRequest
             'date_happy'  => 'required|before_or_equal:' . date("d-m-Y", strtotime(date("d-m-Y") . "- 21 year")),
             'civil_state' => 'required',
             'department'  => 'required',
+            'province'    => 'required',
 
         ];
     }
@@ -76,6 +77,8 @@ class UserStoreRequest extends FormRequest
 
             'civil_state.required'       => 'Seleccionar estado civil',
             'department.required'        => 'Seleccionar Departamento',
+
+            'province.required'          => 'Seleccionar Provincia',
 
         ];
     }
